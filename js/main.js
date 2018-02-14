@@ -24,3 +24,8 @@ var questions: [
 
 ]
 
+
+for (var i = 0; i<questions.length; i++) {
+	var firstH3 = document.createElement("h3")
+	var firstInput = document.createElement("input")
+}
