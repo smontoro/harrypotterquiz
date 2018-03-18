@@ -1,5 +1,5 @@
 
-var questions: [
+var questions = [
 	
 	{
 		question: "What is the name of Hermione's cat?",
@@ -24,8 +24,47 @@ var questions: [
 
 ]
 
-
+//loop through each question
 for (var i = 0; i<questions.length; i++) {
-	var firstH3 = document.createElement("h3")
-	var firstInput = document.createElement("input")
+	//store each question value
+	var question = questions[i].question
+	//store each elemement to add questions to
+	var elemement = document.getElementById('question' + [i])
+	//turn questions into text
+	var questionText = document.createTextNode(question)
+
+	elemement.appendChild(questionText)
+}
+
+//check reseults when user submits quiz
+function testResults() {
+	//store variables to update correct and incorrct totals
+	var correct = 0;
+	var incorrect = 0;
+
+//loop through questions array
+for (var i = 0; i < questions.length; i++) {
+
+   var answer = questions[i].answer;
+   var guess = document.getElementById('answer' + [i].value);
+   //store element to add a class if correct or incorrect
+   var questionSpot = document.getElementById('question' + [i]);
+
+   //check if the user answer matches the correct answer
+   if(answer == guess) {
+   	//update class on questionsSpot
+   	questionSpot.className = questionSpot.className + ' correct';
+   	//add one to correct
+   	correct++;
+   } else {
+   	//update class on questionsSpot
+   	questionSpot.className = questionSpot.className + ' incorrect';
+   	//add one to incorrect
+   	incorrect++;
+   };
+ };
+
+ //update correct and incorrect values
+ document.getElementById('correct').textContent = correct;
+ document.getElementById('incorrect').textContent = incorrect;
 }
